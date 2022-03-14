@@ -1,3 +1,9 @@
+/*
+ * @Description: 
+ * @Autor: Chan
+ * @Date: 2022-03-14 21:29:38
+ * @LastEditTime: 2022-03-14 21:59:45
+ */
 import * as dotenv from "dotenv";
 
 import { HardhatUserConfig, task } from "hardhat/config";
@@ -24,13 +30,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 const config: HardhatUserConfig = {
   solidity: "0.8.4",
   networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-    },
     rinkeby: {
-      url: process.env.ROPSTEN_URL || "",
+      url: process.env.API_URL || "",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
   },
