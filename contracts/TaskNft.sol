@@ -79,4 +79,8 @@ contract TASKNFT is ERC721A, Ownable {
         (bool success, ) = recipient.call{value: balance}("");
         require(success, "TASKNFT: withdraw.");
     }
+
+    function checkTotalMined() public view returns(uint256){
+        return _totalMinted();
+    }
 }

@@ -9,7 +9,9 @@
     "deploy:rinkeby": "npx hardhat run scripts/deploy.ts --network rinkeby",
     "deploy:mainnet": "npx hardhat run scripts/deploy.ts --network mainnet",
     "verify:rinkeby": "npx hardhat verify YOUR_CONTRACT 'YOUR_IPFS_URL' --network rinkeby",
-    "verify:mainnet": "npx hardhat verify YOUR_CONTRACT 'YOUR_IPFS_URL' --network mainnet"
+    "verify:mainnet": "npx hardhat verify YOUR_CONTRACT 'YOUR_IPFS_URL' --network mainnet",
+    "deploy:nft:localhost": "npx hardhat run scripts/nftDeploy.ts",
+    "deploy:nft:rinkeby": "npx hardhat run scripts/nftDeploy.ts --network rinkeby"
   },
   "keywords": [],
   "author": "",

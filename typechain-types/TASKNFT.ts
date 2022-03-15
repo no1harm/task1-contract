@@ -27,6 +27,7 @@ export interface TASKNFTInterface extends utils.Interface {
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "baseURI()": FunctionFragment;
+    "checkTotalMined()": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
     "mint(uint256)": FunctionFragment;
@@ -65,6 +66,10 @@ export interface TASKNFTInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(functionFragment: "baseURI", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "checkTotalMined",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "getApproved",
     values: [BigNumberish]
@@ -135,6 +140,10 @@ export interface TASKNFTInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "approve", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "balanceOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "baseURI", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "checkTotalMined",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "getApproved",
     data: BytesLike
@@ -294,6 +303,8 @@ export interface TASKNFT extends BaseContract {
 
     baseURI(overrides?: CallOverrides): Promise<[string]>;
 
+    checkTotalMined(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -411,6 +422,8 @@ export interface TASKNFT extends BaseContract {
 
   baseURI(overrides?: CallOverrides): Promise<string>;
 
+  checkTotalMined(overrides?: CallOverrides): Promise<BigNumber>;
+
   getApproved(
     tokenId: BigNumberish,
     overrides?: CallOverrides
@@ -518,6 +531,8 @@ export interface TASKNFT extends BaseContract {
     balanceOf(owner: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     baseURI(overrides?: CallOverrides): Promise<string>;
+
+    checkTotalMined(overrides?: CallOverrides): Promise<BigNumber>;
 
     getApproved(
       tokenId: BigNumberish,
@@ -667,6 +682,8 @@ export interface TASKNFT extends BaseContract {
 
     baseURI(overrides?: CallOverrides): Promise<BigNumber>;
 
+    checkTotalMined(overrides?: CallOverrides): Promise<BigNumber>;
+
     getApproved(
       tokenId: BigNumberish,
       overrides?: CallOverrides
@@ -784,6 +801,8 @@ export interface TASKNFT extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     baseURI(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    checkTotalMined(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     getApproved(
       tokenId: BigNumberish,
