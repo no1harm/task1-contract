@@ -1,9 +1,3 @@
-/*
- * @Description: 
- * @Autor: Chan
- * @Date: 2022-03-14 21:29:38
- * @LastEditTime: 2022-03-14 21:59:45
- */
 import * as dotenv from "dotenv";
 
 import { HardhatUserConfig, task } from "hardhat/config";
