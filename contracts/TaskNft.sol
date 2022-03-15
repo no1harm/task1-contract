@@ -16,6 +16,7 @@ contract TASKNFT is ERC721A, Ownable {
     uint256 public constant MAX_MINT_PER_ADDR = 1;
     uint256 public constant MAX_SUPPLY = 1000;
     uint256 public constant PRICE = 0;
+    uint32 time = uint32(block.timestamp);
     ERC20 public token;
 
     event Minted(address minter, uint256 amount);
@@ -34,9 +35,9 @@ contract TASKNFT is ERC721A, Ownable {
     function mint(uint256 quantity) external payable {
         uint256 userBalance = token.balanceOf(msg.sender);
         uint256 allowance = token.allowance(msg.sender, address(this));
-        require(allowance >= userBalance, "TASKNFT: check the token allowance");
         require(userBalance >= 50, "TASKNFT: you have at least 50 50 TASK");
-        require(status != Status.Finished, "TASKNFT: end.");
+        require(allowance <= userBalance, "TASKNFT: check the token allowance");
+        require(block.timestamp < (time + 365 days), "TASKNFT: end.");
         require(tx.origin == msg.sender, "TASKNFT: can't.");
         require(
             numberMinted(msg.sender) + quantity <= MAX_MINT_PER_ADDR,
