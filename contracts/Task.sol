@@ -14,8 +14,8 @@ contract Task is ERC20, Ownable {
     }
 
     function claim() external {
-        require(block.timestamp < (time + 365 days), "claim timeout,sry");
-        require(!isClaimed(msg.sender), "claimed");
+        require(block.timestamp < (time + 365 days), "Claim Timeout,Sorry");
+        require(!isClaimed(msg.sender), "Claimed");
         claimUsers[msg.sender] = true;
         transferFrom(owner(), msg.sender, claimNumber);
     }
