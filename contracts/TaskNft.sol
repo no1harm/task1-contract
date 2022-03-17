@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "hardhat/console.sol";
 import "./Task.sol";
 
 contract TASKNFT is ERC721A, Ownable {
@@ -37,9 +36,6 @@ contract TASKNFT is ERC721A, Ownable {
         uint256 userBalance = token.balanceOf(msg.sender);
         bool approve = token.approve(address(this), 50 * 10**18);
         uint256 allowance = token.allowance(msg.sender, address(this));
-        console.log("userBalance", userBalance);
-        console.log("approve", approve);
-        console.log("allowance", allowance);
         require(approve, "TASKNFT: have to approve");
         require(
             userBalance >= 50 * 10**18,
@@ -53,10 +49,8 @@ contract TASKNFT is ERC721A, Ownable {
             "TASKNFT: max mint per addr is 1."
         );
         require(totalSupply() + quantity <= MAX_SUPPLY, "TASKNFT: sold out.");
-
         _safeMint(msg.sender, quantity);
         refundIfOver(PRICE * quantity);
-        console.log("here ===>");
         token.transferFrom(msg.sender, address(this), 50 * 10**18);
 
         emit Minted(msg.sender, quantity);
