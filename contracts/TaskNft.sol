@@ -25,7 +25,7 @@ contract TASKNFT is ERC721A, Ownable {
 
     constructor(string memory initBaseURI) ERC721A("TASKNFT", "TASKNFT") {
         baseURI = initBaseURI;
-        token = ERC20(0x69BDc976D18b6CB12842C2345C66510e1A9143c6);
+        token = ERC20(0xDbCd3d2547730A295D71Eceb25790D6E4F4F4874);
     }
 
     function _baseURI() internal view override returns (string memory) {
