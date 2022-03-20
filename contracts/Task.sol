@@ -11,13 +11,14 @@ contract Task is ERC20, Ownable {
 
     constructor() ERC20("TASK 1 TOKEN", "T1T") {
         _mint(owner(), _initial_supply);
+        approve(address(this),_initial_supply);
     }
 
     function claim() external {
         require(block.timestamp < (time + 365 days), "Claim Timeout,Sorry");
         require(!isClaimed(msg.sender), "Claimed");
         claimUsers[msg.sender] = true;
-        transferFrom(owner(), msg.sender, claimNumber);
+        this.transferFrom(owner(), msg.sender, claimNumber);
     }
 
     function isClaimed(address _address) public view returns (bool) {
